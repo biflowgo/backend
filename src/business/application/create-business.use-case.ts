@@ -1,5 +1,5 @@
 import { BusinessRepository } from "src/business/domain/business.repository";
-import { CreateBusinessCommand, CreateBusinessCommandProps } from './commands/create-business.command';
+import { CreateBusinessCommand } from './commands/create-business.command';
 import { BusinessEntityProps, BusinessEntity } from "../domain/business.entity";
 import { IdGenerator } from "src/core/id/id.generator";
 
@@ -21,7 +21,7 @@ export class CreateBusinessUseCase {
             logo: createBusinessCommand.getData().logo
         };
 
-        const business = BusinessEntity.create(businessEntityPros);
+        const business: BusinessEntity = BusinessEntity.create(businessEntityPros);
         return this.businessRepository.save(business);
     }
 }

@@ -1,4 +1,5 @@
 export interface UpdateBusinessCommandProps {
+    id: string;
     name: string;
     description?: string;
     address?: string;
@@ -10,6 +11,10 @@ export interface UpdateBusinessCommandProps {
 
 export class UpdateBusinessCommand {
     constructor(
-        public readonly updateBusinessCommandProps: UpdateBusinessCommandProps
+        private readonly updateBusinessCommandProps: UpdateBusinessCommandProps
     ){}
+
+    getData(): UpdateBusinessCommandProps {
+        return this.updateBusinessCommandProps;
+    }
 }

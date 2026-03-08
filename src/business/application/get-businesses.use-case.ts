@@ -1,9 +1,6 @@
 import { BusinessEntity } from "../domain/business.entity";
 import { BusinessRepository } from "../domain/business.repository";
 
-const businessList = [
-    
-]
 export class GetBusinessesUseCase {
     
     constructor(

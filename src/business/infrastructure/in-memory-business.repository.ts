@@ -34,11 +34,23 @@ const businessList: BusinessEntity[] = [business1, business2, business3];
 
 export class InMemoryBusinessRepository implements BusinessRepository {
 
+    async findById(id: string): Promise<BusinessEntity | null> {
+        const business = businessList.find(b => b.businessEntityProps.id === id);
+        return business || null;
+    }
+
     async findAll(): Promise<BusinessEntity[]> {
         return businessList;
     }
 
-    async save(): Promise<void> {
-        return;
+    async save(businessEntity: BusinessEntity): Promise<void> {
+        businessList.push(businessEntity);
+    }
+
+    async update(businessEntity: BusinessEntity): Promise<void> {
+        const index = businessList.findIndex(b => b.businessEntityProps.id === businessEntity.businessEntityProps.id);
+        if (index !== -1) {
+            businessList[index] = {...businessList[index], ...businessEntity};
+        }
     }
 }
