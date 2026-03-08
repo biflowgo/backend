@@ -1,7 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { Column, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Injectable()
+@Entity('business')
 export class BusinessOrmEntity {
 
     @PrimaryColumn()
@@ -10,18 +9,18 @@ export class BusinessOrmEntity {
     @Column()
     name: string;
 
-    @Column()
-    description: string;
+    @Column({ nullable: true })
+    description?: string;
 
-    @Column()
-    address: string;
+    @Column({ nullable: true })
+    address?: string;
 
-    @Column()
-    phone: string;
+    @Column({ nullable: true })
+    phone?: string;
     
     @Column()
     email: string;
 
-    @Column()
-    logo: string;
+    @Column({ nullable: true })
+    logo?: string;
 }
